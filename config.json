@@ -1,0 +1,17 @@
+{
+    "app":{
+        "path":"/root/flask_nodejs/screenshots",
+        "chrome_options":["--no-sandbox","--disable-extensions","--headless"],
+        "chrome_binary_location":"/usr/bin/google-chrome-stable",
+        "chrome_webdriver":"/usr/bin/chromedriver",
+        "timeout":10
+    },
+    "web":{
+        "default":{
+          "width":1920,
+          "height":1080,
+          "filename":"screen",
+          "path":"/root/flask_nodejs/screenshots"
+                  }
+    }
+}
