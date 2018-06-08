@@ -4,9 +4,10 @@ Flask api screenshoting provided URL
 
 Dependencies:
 
-yum install nodejs
-yum install ImageMagick-devel
-npm install -g phantomjs
+
+yum install chromedriver
+yum install google-chrome-stable
+
 pip install selenium
 pip install flask
 
