@@ -11,7 +11,6 @@ with open('config.json') as json_data_file:
    config = json.load(json_data_file)
 
 abspath = lambda *p: os.path.abspath(os.path.join(*p))
-#ROOT = abspath(os.path.dirname(__file__))
 ROOT = "/root/flask_nodejs/img"
 today=datetime.date.today()
 
@@ -22,35 +21,32 @@ def execute_command(command):
 
 
 def do_screen_capturing(url, screen_path, width, height):
-   print ("Capturing screen..")
-   print ("url=",url)
-   print ("screen_path=",screen_path)
-   print ("width",width)
-   print ("height",height)
    options = webdriver.ChromeOptions()
    options.binary_location = ("/usr/bin/google-chrome-stable")
 
    for i in config["app"]["chrome_options"]:
       options.add_argument(i)
-   #options.add_argument("disable-gpu")# disabling infobars
-   #options.add_argument("disable-infobars")# disabling infobars
-   #options.add_argument("--no-sandbox")
-   #options.add_argument("--disable-extensions")
-   #options.add_argument("--headless")
+
    driver = webdriver.Chrome("/usr/bin/chromedriver", chrome_options=options) #executable_path="/usr/local/bin/geckodriver")
-   #if width and heigh:
    driver.set_window_size(width, height)
-   timeout = 10
+   driver.set_page_load_timeout(30)
+
+   timeout = 20
+
    driver.get(url)
    try:
+
+
+
       element_present = EC.presence_of_element_located((By.ID, 'element_id'))
       WebDriverWait(driver, timeout).until(element_present)
       element = WebDriverWait(driver, timeout).until(EC.presence_of_element_located((By.ID, 'element_id')))
    except TimeoutException:
-      print ("Timed out waiting for page to load")
+      pass
+
 
    driver.save_screenshot(screen_path)
-  # display.stop()
+
    driver.close()
 
 def do_crop(params):
