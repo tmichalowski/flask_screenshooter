@@ -3,7 +3,9 @@
         "path":"/root/flask_nodejs/screenshots",
         "chrome_options":["--no-sandbox","--disable-extensions","--headless"],
         "chrome_binary_location":"/usr/bin/google-chrome-stable",
+        "firefox_binary_location":"/root/firefox/firefox",
         "chrome_webdriver":"/usr/bin/chromedriver",
+        "gekodriver_path":"geckodriver",
         "timeout":10
     },
     "web":{
@@ -11,7 +13,8 @@
           "width":1920,
           "height":1080,
           "filename":"screen",
-          "path":"/root/flask_nodejs/screenshots"
+          "path":"/root/flask_nodejs/screenshots",
+          "engine":"chrome"
                   }
     }
 }

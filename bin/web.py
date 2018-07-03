@@ -1,4 +1,4 @@
-# from flask import Flask, request #import main Flask class and request object
+from flask import Flask, request #import main Flask class and request object
 from flask import send_file
 import sys
 from selenium import webdriver
@@ -36,8 +36,9 @@ def snapshooter():
    thumbnail_width = request.args.get('thumbnail_width',config['web']['default']['width']) # the width of thumbnail
    thumbnail_height = request.args.get('thumbnail_height',config['web']['default']['height']) # the height of thumbnail
    thumbnail_replace = request.args.get('thumbnail_replace',False) # does thumbnail image replace crop image?
+   engine = request.args.get('engine',config['web']['default']['engine']) #chise engine to open website
    try:
-      get_screen_shot(url=url, crop=crop, thumbnail=crop, filename=filename,width=width, height=height, file_date=file_date, path=path)
+      get_screen_shot(url=url, crop=crop, thumbnail=crop, filename=filename,width=width, height=height, file_date=file_date, path=path, engine=engine)
       print "get_screen_shot OK"
       return '''
 <h1>Screenshoting URL: {}</h1>
@@ -74,7 +75,8 @@ def snapshooter2():
    thumbnail_width = request.args.get('thumbnail_width',config['web']['default']['width']) # the width of thumbnail
    thumbnail_height = request.args.get('thumbnail_height',config['web']['default']['height']) # the height of thumbnail
    thumbnail_replace = request.args.get('thumbnail_replace',False) # does thumbnail image replace crop image?
-   screen_path, crop_path, thumbnail_path = get_screen_shot(url=url, crop=crop, thumbnail=crop, filename=filename,width=width, height=height, file_date=file_date, path=path)
+   engine = request.args.get('engine',config['web']['default']['engine']) #chise engine to open website
+   screen_path, crop_path, thumbnail_path = get_screen_shot(url=url, crop=crop, thumbnail=crop, filename=filename,width=width, height=height, file_date=file_date, path=path,engine=engine)
    print (screen_path)
    return send_file(screen_path, mimetype='image/png')
 
@@ -83,6 +85,6 @@ def snapshooter2():
 
 
 if __name__ == '__main__':
-   app.run(debug=True,host='0.0.0.0', port=5000) #run app in debug mode on port 5000
+   app.run(debug=0,host='0.0.0.0', port=5000) #run app in debug mode on port 5000
 
 
