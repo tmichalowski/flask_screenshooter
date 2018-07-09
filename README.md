@@ -20,10 +20,6 @@ Chrome version 59 or above
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
-
 ```
 yum install python
 
@@ -40,7 +36,7 @@ gpgkey=https://dl.google.com/linux/linux_signing_key.pub
 
 yum install google-chrome-stable
 ```
-
+Full example using centos 7 TO_DO
 
 
 
@@ -76,6 +72,10 @@ TO_DO
 * Firefox Webdriver
 * NodeJS PhantomJS
 
+## Known problems
+* Unfortunatly Library GTK3 which is nessesery for Chrome/Firefox in suitable version is avaible for centos 7.0 and above.
+* PhantomJS is not suported any more and screenshot some pages incorectly.
+* Script still can't find out end of loading all dynamic content. For now wait til timeout.
 
 ## Authors
 * **Tomasz Michalowski** https://github.com/tmichalowski
